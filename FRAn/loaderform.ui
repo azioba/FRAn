@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoaderForm</class>
+ <widget class="QWidget" name="LoaderForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>LoaderForm</string>
+  </property>
+  <widget class="QPushButton" name="OpenButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Path">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>10</y>
+     <width>661</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="DataType">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>771</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Azimuth , Dip, Dip Azimuth</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Dip, Dip Direction</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Az, Dip, DipAz , Spacing, Length</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Dip, DipDir, Spacing, Length</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QTableWidget" name="Preview">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>771</width>
+     <height>371</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>550</y>
+     <width>161</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
