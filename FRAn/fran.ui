@@ -19,8 +19,8 @@
      <rect>
       <x>380</x>
       <y>10</y>
-      <width>411</width>
-      <height>311</height>
+      <width>409</width>
+      <height>309</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -32,17 +32,22 @@
     <property name="mouseTracking">
      <bool>false</bool>
     </property>
+    <zorder>Histo</zorder>
+    <zorder>Histo</zorder>
    </widget>
    <widget class="QCustomPlot" name="Histo" native="true">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>340</y>
-      <width>411</width>
-      <height>191</height>
+      <y>350</y>
+      <width>409</width>
+      <height>189</height>
      </rect>
     </property>
    </widget>
+   <zorder>Plot</zorder>
+   <zorder>Plot</zorder>
+   <zorder>Histo</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

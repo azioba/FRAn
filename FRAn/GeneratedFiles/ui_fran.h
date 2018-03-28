@@ -50,7 +50,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         Plot = new QCustomPlot(centralWidget);
         Plot->setObjectName(QStringLiteral("Plot"));
-        Plot->setGeometry(QRect(380, 10, 411, 311));
+        Plot->setGeometry(QRect(380, 10, 409, 309));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -59,8 +59,11 @@ public:
         Plot->setMouseTracking(false);
         Histo = new QCustomPlot(centralWidget);
         Histo->setObjectName(QStringLiteral("Histo"));
-        Histo->setGeometry(QRect(380, 340, 411, 191));
+        Histo->setGeometry(QRect(380, 350, 409, 189));
         FRAnClass->setCentralWidget(centralWidget);
+        Plot->raise();
+        Plot->raise();
+        Histo->raise();
         menuBar = new QMenuBar(FRAnClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 800, 21));

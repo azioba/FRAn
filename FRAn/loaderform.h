@@ -14,7 +14,7 @@ public:
 
 private:
 	Ui::LoaderForm ui;
-	QPushButton *openfile = nullptr;
+	QPushButton *openfile = nullptr ;
 
 private slots:
 	void openPath();
