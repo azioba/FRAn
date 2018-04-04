@@ -14,10 +14,12 @@ public:
 
 private:
 	Ui::LoaderForm ui;
-	QPushButton *openfile = nullptr ;
+	//QPushButton *openfile = nullptr ;
+	//QPushButton *loadfile = nullptr;
 
 private slots:
 	void openPath();
+	void loadFile();
 };
 
 

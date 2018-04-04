@@ -1,6 +1,7 @@
 #include "fran.h"
 #include "loaderform.h"
 #include <QtWidgets/QApplication>
+#include <qdebug.h>
 
 int main(int argc, char *argv[])
 {

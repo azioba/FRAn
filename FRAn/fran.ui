@@ -14,40 +14,38 @@
    <string>FRAn</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QCustomPlot" name="Plot" native="true">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>320</x>
       <y>10</y>
-      <width>409</width>
-      <height>309</height>
+      <width>471</width>
+      <height>521</height>
      </rect>
     </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="mouseTracking">
-     <bool>false</bool>
-    </property>
-    <zorder>Histo</zorder>
-    <zorder>Histo</zorder>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QCustomPlot" name="Plot" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <zorder>horizontalLayoutWidget</zorder>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCustomPlot" name="Histo" native="true">
+       <zorder>Plot</zorder>
+       <zorder>horizontalLayoutWidget</zorder>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QCustomPlot" name="Histo" native="true">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>350</y>
-      <width>409</width>
-      <height>189</height>
-     </rect>
-    </property>
-   </widget>
-   <zorder>Plot</zorder>
-   <zorder>Plot</zorder>
-   <zorder>Histo</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

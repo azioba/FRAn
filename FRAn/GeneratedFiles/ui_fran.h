@@ -19,6 +19,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "qcustomplot.h"
 
@@ -30,6 +31,8 @@ public:
     QAction *actionOpen_file_s;
     QAction *actionExit;
     QWidget *centralWidget;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
     QCustomPlot *Plot;
     QCustomPlot *Histo;
     QMenuBar *menuBar;
@@ -48,22 +51,32 @@ public:
         actionExit->setObjectName(QStringLiteral("actionExit"));
         centralWidget = new QWidget(FRAnClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        Plot = new QCustomPlot(centralWidget);
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(320, 10, 471, 521));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        Plot = new QCustomPlot(verticalLayoutWidget);
         Plot->setObjectName(QStringLiteral("Plot"));
-        Plot->setGeometry(QRect(380, 10, 409, 309));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Plot->sizePolicy().hasHeightForWidth());
         Plot->setSizePolicy(sizePolicy);
         Plot->setMouseTracking(false);
-        Histo = new QCustomPlot(centralWidget);
+
+        verticalLayout->addWidget(Plot);
+
+        Histo = new QCustomPlot(verticalLayoutWidget);
         Histo->setObjectName(QStringLiteral("Histo"));
-        Histo->setGeometry(QRect(380, 350, 409, 189));
+        Plot->raise();
+
+        verticalLayout->addWidget(Histo);
+
         FRAnClass->setCentralWidget(centralWidget);
-        Plot->raise();
-        Plot->raise();
-        Histo->raise();
         menuBar = new QMenuBar(FRAnClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 800, 21));

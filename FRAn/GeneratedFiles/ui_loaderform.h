@@ -37,7 +37,7 @@ public:
     QTableWidget *Preview;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton;
+    QPushButton *OkButton;
     QPushButton *pushButton_2;
 
     void setupUi(QWidget *LoaderForm)
@@ -79,10 +79,10 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        pushButton = new QPushButton(LoaderForm);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        OkButton = new QPushButton(LoaderForm);
+        OkButton->setObjectName(QStringLiteral("OkButton"));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(OkButton);
 
         pushButton_2 = new QPushButton(LoaderForm);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
@@ -109,7 +109,7 @@ public:
          << QApplication::translate("LoaderForm", "Az, Dip, DipAz , Spacing, Length", Q_NULLPTR)
          << QApplication::translate("LoaderForm", "Dip, DipDir, Spacing, Length", Q_NULLPTR)
         );
-        pushButton->setText(QApplication::translate("LoaderForm", "Ok", Q_NULLPTR));
+        OkButton->setText(QApplication::translate("LoaderForm", "Ok", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("LoaderForm", "Cancel", Q_NULLPTR));
     } // retranslateUi
 
