@@ -45,6 +45,30 @@ void LoaderForm::openPath()
 	}
 
 	
+	QTableWidgetItem *m_data=0;
+	int columnSize;
+	ui.Preview->setRowCount(inputData.size()); 
+	columnSize = 3;
+	ui.Preview->setColumnCount(columnSize);
+
+	ui.Preview->setItem(inputData.size(), 3, m_data);
+
+	QStringList m_header;
+	m_header << "Azimuth" << "Dip" << "Dip Azimuth";
+	ui.Preview->setHorizontalHeaderLabels(m_header);
+
+	for (int i = 0; i < inputData.size(); i++) 
+	{
+		for (int j = 0; j < columnSize; j++)
+		{
+			//m_data->setText();
+			ui.Preview->setItem(i, j, m_data);
+		}
+		
+	}
+	
+
+	
 }
 
 void LoaderForm::loadFile()
