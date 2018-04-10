@@ -217,6 +217,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataType.h" />
     <ClInclude Include="GeneratedFiles\ui_fran.h" />
     <ClInclude Include="GeneratedFiles\ui_loaderform.h" />
     <CustomBuild Include="loaderform.h">

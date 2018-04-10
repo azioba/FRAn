@@ -38,7 +38,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *OkButton;
-    QPushButton *pushButton_2;
+    QPushButton *CancelButton;
 
     void setupUi(QWidget *LoaderForm)
     {
@@ -57,6 +57,7 @@ public:
 
         Path = new QLineEdit(LoaderForm);
         Path->setObjectName(QStringLiteral("Path"));
+        Path->setReadOnly(true);
 
         horizontalLayout_2->addWidget(Path);
 
@@ -84,10 +85,10 @@ public:
 
         horizontalLayout->addWidget(OkButton);
 
-        pushButton_2 = new QPushButton(LoaderForm);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        CancelButton = new QPushButton(LoaderForm);
+        CancelButton->setObjectName(QStringLiteral("CancelButton"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(CancelButton);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -110,7 +111,7 @@ public:
          << QApplication::translate("LoaderForm", "Dip, DipDir, Spacing, Length", Q_NULLPTR)
         );
         OkButton->setText(QApplication::translate("LoaderForm", "Ok", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("LoaderForm", "Cancel", Q_NULLPTR));
+        CancelButton->setText(QApplication::translate("LoaderForm", "Cancel", Q_NULLPTR));
     } // retranslateUi
 
 };

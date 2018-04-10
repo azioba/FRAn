@@ -2,6 +2,7 @@
 #define LOADERFORM_H
 
 #include <QWidget>
+#include <QTableWidget>
 #include "ui_loaderform.h"
 
 class LoaderForm : public QWidget

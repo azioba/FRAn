@@ -99,5 +99,8 @@
     <ClInclude Include="GeneratedFiles\ui_loaderform.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataType.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
