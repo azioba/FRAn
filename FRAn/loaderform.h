@@ -1,16 +1,16 @@
 #ifndef LOADERFORM_H
 #define LOADERFORM_H
 
-#include <QWidget>
+#include <QDialog>
 #include <QTableWidget>
 #include "ui_loaderform.h"
 
-class LoaderForm : public QWidget
+class LoaderForm : public QDialog
 {
 	Q_OBJECT
 
 public:
-	LoaderForm(QWidget *parent = 0);
+	LoaderForm(QDialog *parent = 0);
 	~LoaderForm();
 
 private:

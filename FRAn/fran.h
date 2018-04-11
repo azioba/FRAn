@@ -20,6 +20,7 @@ private:
 	
 private slots:
 	void openLoader();
+	void convertFile();
 };
 
 

@@ -8,8 +8,8 @@
 #include "Converter.h"
 
 
-LoaderForm::LoaderForm(QWidget *parent)
-	: QWidget(parent)
+LoaderForm::LoaderForm(QDialog *parent)
+	: QDialog(parent)
 {
 	ui.setupUi(this);
 	//openfile = new QPushButton;
@@ -17,6 +17,7 @@ LoaderForm::LoaderForm(QWidget *parent)
 
 	connect(ui.OpenButton, SIGNAL(clicked()), this, SLOT(openPath()));
 	connect(ui.OkButton, SIGNAL(clicked()), this, SLOT(loadFile()));
+	connect(ui.CancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
 void LoaderForm::openPath()

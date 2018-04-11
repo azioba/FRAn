@@ -13,11 +13,14 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -35,6 +38,18 @@ public:
     QVBoxLayout *verticalLayout;
     QCustomPlot *Plot;
     QCustomPlot *Histo;
+    QTableWidget *List;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *convertButton;
+    QPushButton *plotButton;
+    QPushButton *saveButton;
+    QTableWidget *List_2;
+    QWidget *horizontalLayoutWidget_2;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *editButton;
+    QPushButton *plusButton;
+    QPushButton *minusbutton;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
@@ -72,9 +87,61 @@ public:
 
         Histo = new QCustomPlot(verticalLayoutWidget);
         Histo->setObjectName(QStringLiteral("Histo"));
-        Plot->raise();
 
         verticalLayout->addWidget(Histo);
+
+        List = new QTableWidget(centralWidget);
+        List->setObjectName(QStringLiteral("List"));
+        List->setGeometry(QRect(10, 10, 301, 191));
+        horizontalLayoutWidget = new QWidget(centralWidget);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(10, 450, 301, 31));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        convertButton = new QPushButton(horizontalLayoutWidget);
+        convertButton->setObjectName(QStringLiteral("convertButton"));
+
+        horizontalLayout->addWidget(convertButton);
+
+        plotButton = new QPushButton(horizontalLayoutWidget);
+        plotButton->setObjectName(QStringLiteral("plotButton"));
+
+        horizontalLayout->addWidget(plotButton);
+
+        saveButton = new QPushButton(horizontalLayoutWidget);
+        saveButton->setObjectName(QStringLiteral("saveButton"));
+
+        horizontalLayout->addWidget(saveButton);
+
+        List_2 = new QTableWidget(centralWidget);
+        List_2->setObjectName(QStringLiteral("List_2"));
+        List_2->setGeometry(QRect(10, 250, 301, 191));
+        horizontalLayoutWidget_2 = new QWidget(centralWidget);
+        horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
+        horizontalLayoutWidget_2->setGeometry(QRect(10, 210, 301, 31));
+        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        editButton = new QPushButton(horizontalLayoutWidget_2);
+        editButton->setObjectName(QStringLiteral("editButton"));
+        editButton->setIconSize(QSize(16, 16));
+
+        horizontalLayout_2->addWidget(editButton);
+
+        plusButton = new QPushButton(horizontalLayoutWidget_2);
+        plusButton->setObjectName(QStringLiteral("plusButton"));
+
+        horizontalLayout_2->addWidget(plusButton);
+
+        minusbutton = new QPushButton(horizontalLayoutWidget_2);
+        minusbutton->setObjectName(QStringLiteral("minusbutton"));
+
+        horizontalLayout_2->addWidget(minusbutton);
 
         FRAnClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(FRAnClass);
@@ -107,6 +174,12 @@ public:
         FRAnClass->setWindowTitle(QApplication::translate("FRAnClass", "FRAn", Q_NULLPTR));
         actionOpen_file_s->setText(QApplication::translate("FRAnClass", "Open file(s)", Q_NULLPTR));
         actionExit->setText(QApplication::translate("FRAnClass", "Exit", Q_NULLPTR));
+        convertButton->setText(QApplication::translate("FRAnClass", "Convert", Q_NULLPTR));
+        plotButton->setText(QApplication::translate("FRAnClass", "Plot", Q_NULLPTR));
+        saveButton->setText(QApplication::translate("FRAnClass", "Save", Q_NULLPTR));
+        editButton->setText(QApplication::translate("FRAnClass", "Edit", Q_NULLPTR));
+        plusButton->setText(QApplication::translate("FRAnClass", "+", Q_NULLPTR));
+        minusbutton->setText(QApplication::translate("FRAnClass", "-", Q_NULLPTR));
         menuMenu->setTitle(QApplication::translate("FRAnClass", "Menu", Q_NULLPTR));
     } // retranslateUi
 
