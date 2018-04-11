@@ -32,15 +32,17 @@ void LoaderForm::openPath()
 	if (fichier)
 	{
 		std::string ligne;
+
+		//stream on the first line to retrieve the number of column needed for the QTableWidget
 		getline(fichier, ligne);
 		std::istringstream column(ligne);
-		std::string word;
-		while (getline(column, word, ' '))
+		std::string wordsInHeader;
+		while (getline(column, wordsInHeader, ' '))
 			++columnCount;
 	
 		
 		
-
+		// stream on the file from the second line and filling the table
 		while (getline(fichier, ligne))
 		{
 			std::stringstream stream(ligne);
@@ -58,10 +60,10 @@ void LoaderForm::openPath()
 
 	//QTableWidgetItem *m_data;
 	
-	int columnSize;
+	//set the number of rows to the size  of the file
 	ui.Preview->setRowCount(inputData.size()); 
-	columnSize = columnCount;
-	ui.Preview->setColumnCount(columnSize);
+	//set the number of columns from the column count retrieved from getline
+	ui.Preview->setColumnCount(columnCount);
 
 	//ui.Preview->setItem(inputData.size(), 3, m_data);
 
