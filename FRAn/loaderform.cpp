@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <QDebug>
+#include "Converter.h"
 
 
 LoaderForm::LoaderForm(QWidget *parent)
@@ -20,6 +21,7 @@ LoaderForm::LoaderForm(QWidget *parent)
 
 void LoaderForm::openPath()
 {
+	euNorm data;
 	QString filename = QFileDialog::getOpenFileName(this, tr("Open File"), "C:\Users\lucil\Documents\Visual Studio 2015\Projects\FRAn", "text File(*.txt);; All Files (*.*)");
 	ui.Path->setText(filename);
 
@@ -31,40 +33,41 @@ void LoaderForm::openPath()
 		while (getline(fichier, ligne))
 		{
 			std::stringstream stream(ligne);
-			euNorm data;
+			//euNorm data;
 			stream >> data.az >> data.dip >> data.dipAz;
 			qDebug() << data.az << " " << data.dip << " " << data.dipAz.data();
 			inputData.push_back(data);
-
 		}
-
 	}
 	else
 	{
 		qDebug() << "erreur";
 	}
 
+	//TODO finir d'implementer le code de lecture et de remplissage du tableau
+
+	//QTableWidgetItem *m_data;
 	
-	QTableWidgetItem *m_data=0;
 	int columnSize;
 	ui.Preview->setRowCount(inputData.size()); 
 	columnSize = 3;
 	ui.Preview->setColumnCount(columnSize);
 
-	ui.Preview->setItem(inputData.size(), 3, m_data);
+	//ui.Preview->setItem(inputData.size(), 3, m_data);
 
 	QStringList m_header;
 	m_header << "Azimuth" << "Dip" << "Dip Azimuth";
 	ui.Preview->setHorizontalHeaderLabels(m_header);
+	ui.Preview->setShowGrid(false);
+	ui.Preview->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
+	ui.Preview->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
+	ui.Preview->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeMode::Stretch);
 
 	for (int i = 0; i < inputData.size(); i++) 
 	{
-		for (int j = 0; j < columnSize; j++)
-		{
-			//m_data->setText();
-			ui.Preview->setItem(i, j, m_data);
-		}
-		
+		ui.Preview->setItem(i, 0, new QTableWidgetItem(QString::number(inputData[i].az)));
+		ui.Preview->setItem(i, 1, new QTableWidgetItem(QString::number(inputData[i].dip)));
+		ui.Preview->setItem(i, 2, new QTableWidgetItem(inputData[i].dipAz.data()));		
 	}
 	
 

@@ -100,7 +100,10 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="DataType.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Converter.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
