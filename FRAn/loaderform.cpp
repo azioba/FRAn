@@ -21,6 +21,8 @@ LoaderForm::LoaderForm(QWidget *parent)
 
 void LoaderForm::openPath()
 {
+	int rowCount=0;
+	int columnCount=0;
 	euNorm data;
 	QString filename = QFileDialog::getOpenFileName(this, tr("Open File"), "C:\Users\lucil\Documents\Visual Studio 2015\Projects\FRAn", "text File(*.txt);; All Files (*.*)");
 	ui.Path->setText(filename);
@@ -30,10 +32,18 @@ void LoaderForm::openPath()
 	if (fichier)
 	{
 		std::string ligne;
+		getline(fichier, ligne);
+		std::istringstream column(ligne);
+		std::string word;
+		while (getline(column, word, ' '))
+			++columnCount;
+	
+		
+		
+
 		while (getline(fichier, ligne))
 		{
 			std::stringstream stream(ligne);
-			//euNorm data;
 			stream >> data.az >> data.dip >> data.dipAz;
 			qDebug() << data.az << " " << data.dip << " " << data.dipAz.data();
 			inputData.push_back(data);
@@ -50,7 +60,7 @@ void LoaderForm::openPath()
 	
 	int columnSize;
 	ui.Preview->setRowCount(inputData.size()); 
-	columnSize = 3;
+	columnSize = columnCount;
 	ui.Preview->setColumnCount(columnSize);
 
 	//ui.Preview->setItem(inputData.size(), 3, m_data);
@@ -70,7 +80,7 @@ void LoaderForm::openPath()
 		ui.Preview->setItem(i, 2, new QTableWidgetItem(inputData[i].dipAz.data()));		
 	}
 	
-
+	
 	
 }
 

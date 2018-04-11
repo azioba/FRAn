@@ -1,3 +1,4 @@
+Azimuth Dip DipAzimuth
 020 65 NW
 030 70 SE
 090 45 S
