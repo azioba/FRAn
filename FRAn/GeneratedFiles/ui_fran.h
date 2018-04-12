@@ -50,6 +50,11 @@ public:
     QPushButton *editButton;
     QPushButton *plusButton;
     QPushButton *minusbutton;
+    QWidget *horizontalLayoutWidget_3;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *clusterButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
@@ -143,6 +148,29 @@ public:
 
         horizontalLayout_2->addWidget(minusbutton);
 
+        horizontalLayoutWidget_3 = new QWidget(centralWidget);
+        horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
+        horizontalLayoutWidget_3->setGeometry(QRect(10, 490, 301, 31));
+        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        clusterButton = new QPushButton(horizontalLayoutWidget_3);
+        clusterButton->setObjectName(QStringLiteral("clusterButton"));
+
+        horizontalLayout_3->addWidget(clusterButton);
+
+        pushButton_2 = new QPushButton(horizontalLayoutWidget_3);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+
+        horizontalLayout_3->addWidget(pushButton_2);
+
+        pushButton = new QPushButton(horizontalLayoutWidget_3);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        horizontalLayout_3->addWidget(pushButton);
+
         FRAnClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(FRAnClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -180,6 +208,9 @@ public:
         editButton->setText(QApplication::translate("FRAnClass", "Edit", Q_NULLPTR));
         plusButton->setText(QApplication::translate("FRAnClass", "+", Q_NULLPTR));
         minusbutton->setText(QApplication::translate("FRAnClass", "-", Q_NULLPTR));
+        clusterButton->setText(QApplication::translate("FRAnClass", "Cluster Analysis", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("FRAnClass", "PushButton", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("FRAnClass", "PushButton", Q_NULLPTR));
         menuMenu->setTitle(QApplication::translate("FRAnClass", "Menu", Q_NULLPTR));
     } // retranslateUi
 
