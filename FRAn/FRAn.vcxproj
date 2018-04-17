@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="clusteranalysis.cpp" />
+    <ClCompile Include="Converter.cpp" />
     <ClCompile Include="fran.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_clusteranalysis.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

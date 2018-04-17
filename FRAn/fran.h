@@ -1,13 +1,15 @@
-#ifndef FRAN_H
-#define FRAN_H
+#pragma once
 
 #include <QtWidgets/QMainWindow>
-#include "ui_fran.h"
-#include "ui_loaderform.h"
-#include "ui_clusteranalysis.h"
 #include "loaderform.h"
 #include "clusteranalysis.h"
+#include "Converter.h"
+#include "DataType.h"
 
+namespace Ui
+{
+	class FRAnClass;
+}
 
 class FRAn : public QMainWindow
 {
@@ -18,17 +20,22 @@ public:
 	~FRAn();
 
 private:
-	Ui::FRAnClass ui;
+	Ui::FRAnClass *_ui = nullptr;
 	LoaderForm *loaderform = nullptr;
 	ClusterAnalysis *clusteranalysis = nullptr;
+
+	std::vector<euNorm> _inputData;
+	std::vector<usNorm> _outputData;
+
 	
 private slots:
 	void openLoader();
 	void convertFile();
 	void clustering();
+	void onLoaderFormAccepted();
 };
 
 
 
 
-#endif // FRAN_H
+

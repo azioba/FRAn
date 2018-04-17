@@ -34,27 +34,25 @@ public:
     QAction *actionOpen_file_s;
     QAction *actionExit;
     QWidget *centralWidget;
-    QWidget *verticalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout_3;
+    QTableWidget *originalData;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *editButton;
+    QPushButton *addButton;
+    QPushButton *removebutton;
+    QHBoxLayout *horizontalLayout_6;
+    QPushButton *convertButton;
+    QPushButton *revertButton;
+    QPushButton *saveButton;
+    QTableWidget *convertedData;
+    QHBoxLayout *horizontalLayout_7;
+    QPushButton *clusterButton;
+    QPushButton *plotButton;
+    QPushButton *pushButton_4;
     QVBoxLayout *verticalLayout;
     QCustomPlot *Plot;
     QCustomPlot *Histo;
-    QTableWidget *List;
-    QWidget *horizontalLayoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *convertButton;
-    QPushButton *plotButton;
-    QPushButton *saveButton;
-    QTableWidget *List_2;
-    QWidget *horizontalLayoutWidget_2;
-    QHBoxLayout *horizontalLayout_2;
-    QPushButton *editButton;
-    QPushButton *plusButton;
-    QPushButton *minusbutton;
-    QWidget *horizontalLayoutWidget_3;
-    QHBoxLayout *horizontalLayout_3;
-    QPushButton *clusterButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
@@ -64,24 +62,103 @@ public:
     {
         if (FRAnClass->objectName().isEmpty())
             FRAnClass->setObjectName(QStringLiteral("FRAnClass"));
-        FRAnClass->resize(800, 600);
+        FRAnClass->resize(731, 600);
         actionOpen_file_s = new QAction(FRAnClass);
         actionOpen_file_s->setObjectName(QStringLiteral("actionOpen_file_s"));
         actionExit = new QAction(FRAnClass);
         actionExit->setObjectName(QStringLiteral("actionExit"));
         centralWidget = new QWidget(FRAnClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        verticalLayoutWidget = new QWidget(centralWidget);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(320, 10, 471, 521));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        horizontalLayout = new QHBoxLayout(centralWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        originalData = new QTableWidget(centralWidget);
+        originalData->setObjectName(QStringLiteral("originalData"));
+
+        verticalLayout_3->addWidget(originalData);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        editButton = new QPushButton(centralWidget);
+        editButton->setObjectName(QStringLiteral("editButton"));
+        editButton->setIconSize(QSize(16, 16));
+
+        horizontalLayout_5->addWidget(editButton);
+
+        addButton = new QPushButton(centralWidget);
+        addButton->setObjectName(QStringLiteral("addButton"));
+
+        horizontalLayout_5->addWidget(addButton);
+
+        removebutton = new QPushButton(centralWidget);
+        removebutton->setObjectName(QStringLiteral("removebutton"));
+
+        horizontalLayout_5->addWidget(removebutton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_5);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        convertButton = new QPushButton(centralWidget);
+        convertButton->setObjectName(QStringLiteral("convertButton"));
+
+        horizontalLayout_6->addWidget(convertButton);
+
+        revertButton = new QPushButton(centralWidget);
+        revertButton->setObjectName(QStringLiteral("revertButton"));
+
+        horizontalLayout_6->addWidget(revertButton);
+
+        saveButton = new QPushButton(centralWidget);
+        saveButton->setObjectName(QStringLiteral("saveButton"));
+
+        horizontalLayout_6->addWidget(saveButton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_6);
+
+        convertedData = new QTableWidget(centralWidget);
+        convertedData->setObjectName(QStringLiteral("convertedData"));
+
+        verticalLayout_3->addWidget(convertedData);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        clusterButton = new QPushButton(centralWidget);
+        clusterButton->setObjectName(QStringLiteral("clusterButton"));
+
+        horizontalLayout_7->addWidget(clusterButton);
+
+        plotButton = new QPushButton(centralWidget);
+        plotButton->setObjectName(QStringLiteral("plotButton"));
+
+        horizontalLayout_7->addWidget(plotButton);
+
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+
+        horizontalLayout_7->addWidget(pushButton_4);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_7);
+
+
+        horizontalLayout->addLayout(verticalLayout_3);
+
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        Plot = new QCustomPlot(verticalLayoutWidget);
+        Plot = new QCustomPlot(centralWidget);
         Plot->setObjectName(QStringLiteral("Plot"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Plot->sizePolicy().hasHeightForWidth());
@@ -90,91 +167,20 @@ public:
 
         verticalLayout->addWidget(Plot);
 
-        Histo = new QCustomPlot(verticalLayoutWidget);
+        Histo = new QCustomPlot(centralWidget);
         Histo->setObjectName(QStringLiteral("Histo"));
+        sizePolicy.setHeightForWidth(Histo->sizePolicy().hasHeightForWidth());
+        Histo->setSizePolicy(sizePolicy);
 
         verticalLayout->addWidget(Histo);
 
-        List = new QTableWidget(centralWidget);
-        List->setObjectName(QStringLiteral("List"));
-        List->setGeometry(QRect(10, 10, 301, 191));
-        horizontalLayoutWidget = new QWidget(centralWidget);
-        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 450, 301, 31));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        convertButton = new QPushButton(horizontalLayoutWidget);
-        convertButton->setObjectName(QStringLiteral("convertButton"));
 
-        horizontalLayout->addWidget(convertButton);
-
-        plotButton = new QPushButton(horizontalLayoutWidget);
-        plotButton->setObjectName(QStringLiteral("plotButton"));
-
-        horizontalLayout->addWidget(plotButton);
-
-        saveButton = new QPushButton(horizontalLayoutWidget);
-        saveButton->setObjectName(QStringLiteral("saveButton"));
-
-        horizontalLayout->addWidget(saveButton);
-
-        List_2 = new QTableWidget(centralWidget);
-        List_2->setObjectName(QStringLiteral("List_2"));
-        List_2->setGeometry(QRect(10, 250, 301, 191));
-        horizontalLayoutWidget_2 = new QWidget(centralWidget);
-        horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(10, 210, 301, 31));
-        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        editButton = new QPushButton(horizontalLayoutWidget_2);
-        editButton->setObjectName(QStringLiteral("editButton"));
-        editButton->setIconSize(QSize(16, 16));
-
-        horizontalLayout_2->addWidget(editButton);
-
-        plusButton = new QPushButton(horizontalLayoutWidget_2);
-        plusButton->setObjectName(QStringLiteral("plusButton"));
-
-        horizontalLayout_2->addWidget(plusButton);
-
-        minusbutton = new QPushButton(horizontalLayoutWidget_2);
-        minusbutton->setObjectName(QStringLiteral("minusbutton"));
-
-        horizontalLayout_2->addWidget(minusbutton);
-
-        horizontalLayoutWidget_3 = new QWidget(centralWidget);
-        horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(10, 490, 301, 31));
-        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        clusterButton = new QPushButton(horizontalLayoutWidget_3);
-        clusterButton->setObjectName(QStringLiteral("clusterButton"));
-
-        horizontalLayout_3->addWidget(clusterButton);
-
-        pushButton_2 = new QPushButton(horizontalLayoutWidget_3);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-
-        horizontalLayout_3->addWidget(pushButton_2);
-
-        pushButton = new QPushButton(horizontalLayoutWidget_3);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-
-        horizontalLayout_3->addWidget(pushButton);
+        horizontalLayout->addLayout(verticalLayout);
 
         FRAnClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(FRAnClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 800, 21));
+        menuBar->setGeometry(QRect(0, 0, 731, 21));
         menuMenu = new QMenu(menuBar);
         menuMenu->setObjectName(QStringLiteral("menuMenu"));
         FRAnClass->setMenuBar(menuBar);
@@ -202,15 +208,15 @@ public:
         FRAnClass->setWindowTitle(QApplication::translate("FRAnClass", "FRAn", Q_NULLPTR));
         actionOpen_file_s->setText(QApplication::translate("FRAnClass", "Open file(s)", Q_NULLPTR));
         actionExit->setText(QApplication::translate("FRAnClass", "Exit", Q_NULLPTR));
-        convertButton->setText(QApplication::translate("FRAnClass", "Convert", Q_NULLPTR));
-        plotButton->setText(QApplication::translate("FRAnClass", "Plot", Q_NULLPTR));
-        saveButton->setText(QApplication::translate("FRAnClass", "Save", Q_NULLPTR));
         editButton->setText(QApplication::translate("FRAnClass", "Edit", Q_NULLPTR));
-        plusButton->setText(QApplication::translate("FRAnClass", "+", Q_NULLPTR));
-        minusbutton->setText(QApplication::translate("FRAnClass", "-", Q_NULLPTR));
+        addButton->setText(QApplication::translate("FRAnClass", "+", Q_NULLPTR));
+        removebutton->setText(QApplication::translate("FRAnClass", "-", Q_NULLPTR));
+        convertButton->setText(QApplication::translate("FRAnClass", "Convert", Q_NULLPTR));
+        revertButton->setText(QApplication::translate("FRAnClass", "Revert", Q_NULLPTR));
+        saveButton->setText(QApplication::translate("FRAnClass", "Save", Q_NULLPTR));
         clusterButton->setText(QApplication::translate("FRAnClass", "Cluster Analysis", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("FRAnClass", "PushButton", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("FRAnClass", "PushButton", Q_NULLPTR));
+        plotButton->setText(QApplication::translate("FRAnClass", "Plot", Q_NULLPTR));
+        pushButton_4->setText(QApplication::translate("FRAnClass", "PushButton", Q_NULLPTR));
         menuMenu->setTitle(QApplication::translate("FRAnClass", "Menu", Q_NULLPTR));
     } // retranslateUi
 

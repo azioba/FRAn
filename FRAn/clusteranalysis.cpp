@@ -15,6 +15,7 @@ ClusterAnalysis::ClusterAnalysis(QDialog * parent)
 	
 }
 
-ClusterAnalysis::~ClusterAnalysis() {
+ClusterAnalysis::~ClusterAnalysis() 
+{
 	
 }

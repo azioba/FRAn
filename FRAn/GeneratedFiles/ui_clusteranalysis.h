@@ -18,14 +18,15 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QWidget>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_ClusterAnalysis
 {
 public:
-    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer;
     QHBoxLayout *hboxLayout;
     QSpacerItem *spacerItem;
     QPushButton *okButton;
@@ -35,27 +36,34 @@ public:
     {
         if (ClusterAnalysis->objectName().isEmpty())
             ClusterAnalysis->setObjectName(QStringLiteral("ClusterAnalysis"));
-        ClusterAnalysis->resize(400, 300);
-        layoutWidget = new QWidget(ClusterAnalysis);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 250, 351, 33));
-        hboxLayout = new QHBoxLayout(layoutWidget);
+        ClusterAnalysis->resize(500, 500);
+        verticalLayout = new QVBoxLayout(ClusterAnalysis);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
+
+        hboxLayout = new QHBoxLayout();
         hboxLayout->setSpacing(6);
         hboxLayout->setObjectName(QStringLiteral("hboxLayout"));
+        hboxLayout->setSizeConstraint(QLayout::SetFixedSize);
         hboxLayout->setContentsMargins(0, 0, 0, 0);
         spacerItem = new QSpacerItem(131, 31, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         hboxLayout->addItem(spacerItem);
 
-        okButton = new QPushButton(layoutWidget);
+        okButton = new QPushButton(ClusterAnalysis);
         okButton->setObjectName(QStringLiteral("okButton"));
 
         hboxLayout->addWidget(okButton);
 
-        cancelButton = new QPushButton(layoutWidget);
+        cancelButton = new QPushButton(ClusterAnalysis);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
 
         hboxLayout->addWidget(cancelButton);
+
+
+        verticalLayout->addLayout(hboxLayout);
 
 
         retranslateUi(ClusterAnalysis);

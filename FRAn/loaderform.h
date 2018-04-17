@@ -1,9 +1,15 @@
-#ifndef LOADERFORM_H
-#define LOADERFORM_H
+#pragma once
 
 #include <QDialog>
 #include <QTableWidget>
-#include "ui_loaderform.h"
+#include "Converter.h"
+#include "DataType.h"
+
+
+namespace Ui
+{
+	class LoaderForm;
+}
 
 class LoaderForm : public QDialog
 {
@@ -13,10 +19,20 @@ public:
 	LoaderForm(QDialog *parent = 0);
 	~LoaderForm();
 
+
+	
+	const std::vector<euNorm>& getInputData() const
+	{
+		return _inputData;
+	}
+	
+
+
 private:
-	Ui::LoaderForm ui;
-	//QPushButton *openfile = nullptr ;
-	//QPushButton *loadfile = nullptr;
+	Ui::LoaderForm *_ui = nullptr;
+	std::vector<euNorm> _inputData;
+	euNorm data;
+	
 
 private slots:
 	void openPath();
@@ -25,4 +41,3 @@ private slots:
 
 
 
-#endif // LOADERFORM_H

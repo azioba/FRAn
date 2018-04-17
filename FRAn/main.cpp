@@ -1,5 +1,6 @@
 #include "fran.h"
 #include "loaderform.h"
+#include "Converter.h"
 #include <QtWidgets/QApplication>
 #include <qdebug.h>
 

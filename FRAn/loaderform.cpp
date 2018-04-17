@@ -1,34 +1,36 @@
 #include "loaderform.h"
+#include "ui_loaderform.h"
 #include <QFileDialog>
 #include <QMessageBox>
-#include "DataType.h"
 #include <fstream>
 #include <sstream>
 #include <QDebug>
-#include "Converter.h"
+
 
 
 LoaderForm::LoaderForm(QDialog *parent)
 	: QDialog(parent)
 {
-	ui.setupUi(this);
+	_ui = new Ui::LoaderForm;
+	_ui->setupUi(this);
 	//openfile = new QPushButton;
 	//loadfile = new QPushButton;
 
-	connect(ui.OpenButton, SIGNAL(clicked()), this, SLOT(openPath()));
-	connect(ui.OkButton, SIGNAL(clicked()), this, SLOT(loadFile()));
-	connect(ui.CancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(_ui->OpenButton, SIGNAL(clicked()), this, SLOT(openPath()));
+	//connect(_ui.OkButton, SIGNAL(clicked()), this, SLOT(loadFile()));
+	connect(_ui->OkButton, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(_ui->CancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
 void LoaderForm::openPath()
 {
 	int rowCount=0;
 	int columnCount=0;
-	euNorm data;
+	//euNorm data;
 	QString filename = QFileDialog::getOpenFileName(this, tr("Open File"), "C:\Users\lucil\Documents\Visual Studio 2015\Projects\FRAn", "text File(*.txt);; All Files (*.*)");
-	ui.Path->setText(filename);
+	_ui->Path->setText(filename);
 
-	std::vector<euNorm> inputData;
+	
 	std::ifstream fichier(filename.toStdString());
 	if (fichier)
 	{
@@ -49,7 +51,7 @@ void LoaderForm::openPath()
 			std::stringstream stream(ligne);
 			stream >> data.az >> data.dip >> data.dipAz;
 			qDebug() << data.az << " " << data.dip << " " << data.dipAz.data();
-			inputData.push_back(data);
+			_inputData.push_back(data);
 		}
 	}
 	else
@@ -62,25 +64,25 @@ void LoaderForm::openPath()
 	//QTableWidgetItem *m_data;
 	
 	//set the number of rows to the size  of the file
-	ui.Preview->setRowCount(inputData.size()); 
+	_ui->Preview->setRowCount(_inputData.size()); 
 	//set the number of columns from the column count retrieved from getline
-	ui.Preview->setColumnCount(columnCount);
+	_ui->Preview->setColumnCount(columnCount);
 
 	//ui.Preview->setItem(inputData.size(), 3, m_data);
 
 	QStringList m_header;
 	m_header << "Azimuth" << "Dip" << "Dip Azimuth";
-	ui.Preview->setHorizontalHeaderLabels(m_header);
-	ui.Preview->setShowGrid(false);
-	ui.Preview->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
-	ui.Preview->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
-	ui.Preview->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeMode::Stretch);
+	_ui->Preview->setHorizontalHeaderLabels(m_header);
+	_ui->Preview->setShowGrid(false);
+	_ui->Preview->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
+	_ui->Preview->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
+	_ui->Preview->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeMode::Stretch);
 
-	for (int i = 0; i < inputData.size(); i++) 
+	for (int i = 0; i < _inputData.size(); i++) 
 	{
-		ui.Preview->setItem(i, 0, new QTableWidgetItem(QString::number(inputData[i].az)));
-		ui.Preview->setItem(i, 1, new QTableWidgetItem(QString::number(inputData[i].dip)));
-		ui.Preview->setItem(i, 2, new QTableWidgetItem(inputData[i].dipAz.data()));		
+		_ui->Preview->setItem(i, 0, new QTableWidgetItem(QString::number(_inputData[i].az)));
+		_ui->Preview->setItem(i, 1, new QTableWidgetItem(QString::number(_inputData[i].dip)));
+		_ui->Preview->setItem(i, 2, new QTableWidgetItem(_inputData[i].dipAz.data()));		
 	}
 	
 	
