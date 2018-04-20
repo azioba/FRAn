@@ -26,7 +26,10 @@ public:
 		return _inputData;
 	}
 	
-
+	const QTableWidget getQTableWidget() const
+	{
+		
+	}
 
 private:
 	Ui::LoaderForm *_ui = nullptr;

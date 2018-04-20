@@ -3,7 +3,8 @@
 
 
 
-Converter::Converter()
+Converter::Converter(std::vector<euNorm>& inputData):
+	_inputDataToConvert(inputData)
 {
 }
 

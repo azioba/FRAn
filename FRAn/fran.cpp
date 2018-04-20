@@ -27,7 +27,14 @@ void FRAn::openLoader()
 
 void FRAn::convertFile()
 {
-	
+	Converter converter(_inputData);
+	converter.convertToUsNorm();
+
+	auto outputData = converter.getOutputData();
+	for (auto test : outputData)
+	{
+		qDebug() << QString::number(test.dip) << QString::number(test.dipDir);
+	}
 }
 
 void FRAn::clustering()
@@ -38,7 +45,13 @@ void FRAn::clustering()
 
 void FRAn::onLoaderFormAccepted()
 {
-	std::vector<euNorm> _inputData = loaderform->getInputData();
+	_inputData = loaderform->getInputData();
+	for (auto test : _inputData)
+	{
+		qDebug() << QString::number(test.az) << QString::number(test.dip) << QString::fromStdString(test.dipAz);
+	}
+
+	auto preview = loaderform->getQTableWidget();
 }
 
 

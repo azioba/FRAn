@@ -11,7 +11,7 @@
 class Converter 
 {
 public:
-	Converter();
+	Converter(std::vector<euNorm>& inputData);
 	void convertToUsNorm();
 	void convertToEuNorm();
 	~Converter();
@@ -33,7 +33,6 @@ private:
 	usNorm outData;
 	std::vector<usNorm> _outputData;
 	std::vector<euNorm> _inputDataToConvert;
-
 };
 
 
