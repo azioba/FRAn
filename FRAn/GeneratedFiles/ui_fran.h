@@ -49,7 +49,7 @@ public:
     QHBoxLayout *horizontalLayout_7;
     QPushButton *clusterButton;
     QPushButton *plotButton;
-    QPushButton *pushButton_4;
+    QPushButton *exportButton;
     QVBoxLayout *verticalLayout;
     QCustomPlot *Plot;
     QCustomPlot *Histo;
@@ -142,10 +142,10 @@ public:
 
         horizontalLayout_7->addWidget(plotButton);
 
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        exportButton = new QPushButton(centralWidget);
+        exportButton->setObjectName(QStringLiteral("exportButton"));
 
-        horizontalLayout_7->addWidget(pushButton_4);
+        horizontalLayout_7->addWidget(exportButton);
 
 
         verticalLayout_3->addLayout(horizontalLayout_7);
@@ -216,7 +216,7 @@ public:
         saveButton->setText(QApplication::translate("FRAnClass", "Save", Q_NULLPTR));
         clusterButton->setText(QApplication::translate("FRAnClass", "Cluster Analysis", Q_NULLPTR));
         plotButton->setText(QApplication::translate("FRAnClass", "Plot", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("FRAnClass", "PushButton", Q_NULLPTR));
+        exportButton->setText(QApplication::translate("FRAnClass", "Export", Q_NULLPTR));
         menuMenu->setTitle(QApplication::translate("FRAnClass", "Menu", Q_NULLPTR));
     } // retranslateUi
 

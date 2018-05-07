@@ -96,9 +96,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="exportButton">
           <property name="text">
-           <string>PushButton</string>
+           <string>Export</string>
           </property>
          </widget>
         </item>
