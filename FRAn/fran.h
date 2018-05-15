@@ -27,6 +27,7 @@ private:
 	LoaderForm *loaderform = nullptr;
 	ClusterAnalysis *clusteranalysis = nullptr;
 	QCPBars *histo = nullptr;
+	QCPGraph *xPlot = nullptr;
 
 	std::vector<euNorm> _inputData;
 	std::vector<usNorm> _outputData;
