@@ -8,6 +8,7 @@
 
 
 
+
 LoaderForm::LoaderForm(QDialog *parent)
 	: QDialog(parent)
 {
@@ -50,6 +51,10 @@ void LoaderForm::openPath()
 		{
 			std::stringstream stream(ligne);
 			stream >> data.az >> data.dip >> data.dipAz;
+			if (data.az > 180)
+			{
+				data.az = data.az - 180;
+			}
 			qDebug() << data.az << " " << data.dip << " " << data.dipAz.data();
 			_inputData.push_back(data);
 		}
