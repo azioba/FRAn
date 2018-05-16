@@ -1,5 +1,4 @@
 #include "fran.h"
-
 #include "ui_fran.h"
 #include "ui_loaderform.h"
 #include "ui_clusteranalysis.h"
@@ -14,10 +13,19 @@ FRAn::FRAn(QWidget *parent)
 	loaderform = new LoaderForm;
 	clusteranalysis = new ClusterAnalysis;
 	histo = new QCPBars(_ui->Histo->xAxis, _ui->Histo->yAxis);
+	xPlot = new QCPGraph(_ui->Plot->xAxis, _ui->Plot->yAxis);
+
+	// Histogramm///////////////////////////////////////////////////////
 	_ui->Histo->xAxis->setRange(0, 180);
 	_ui->Histo->xAxis->setLabel("Azimuth");
 	_ui->Histo->yAxis->setRange(0, 1);
 	_ui->Histo->yAxis->setLabel("Count");
+
+	// XPlot////////////////////////////////////////////////////////////
+	_ui->Plot->xAxis->setRange(0, 1);
+	_ui->Plot->xAxis->setLabel("Spacing");
+	_ui->Plot->yAxis->setRange(0, 1);
+	_ui->Plot->yAxis->setLabel("Height");
 	
 	connect(_ui->actionOpen_file_s, SIGNAL(triggered()), this, SLOT(openLoader()));
 	connect(_ui->convertButton, SIGNAL(clicked()), this, SLOT(convertFile()));

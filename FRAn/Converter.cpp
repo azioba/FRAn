@@ -28,7 +28,8 @@ void Converter::convertToUsNorm()
 	for (auto& data : _inputDataToConvert)
 	{
 
-		if (data.dipAz == "N") quadrant = Quadrant(N);
+		if (data.dipAz == "N" && data.az < 90) quadrant = Quadrant(NW);
+		else if (data.dipAz == "N" && data.az > 90) quadrant = Quadrant(N);
 		else if (data.dipAz == "NE") quadrant = Quadrant(NE);
 		else if (data.dipAz == "E") quadrant = Quadrant(E);
 		else if (data.dipAz == "SE") quadrant = Quadrant(SE);
