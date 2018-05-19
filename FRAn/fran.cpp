@@ -25,7 +25,7 @@ FRAn::FRAn(QWidget *parent)
 	_ui->Plot->xAxis->setRange(0, 1);
 	_ui->Plot->xAxis->setLabel("Spacing");
 	_ui->Plot->yAxis->setRange(0, 1);
-	_ui->Plot->yAxis->setLabel("Height");
+	_ui->Plot->yAxis->setLabel("Count");
 	
 	connect(_ui->actionOpen_file_s, SIGNAL(triggered()), this, SLOT(openLoader()));
 	connect(_ui->convertButton, SIGNAL(clicked()), this, SLOT(convertFile()));
@@ -54,7 +54,7 @@ void FRAn::convertFile()
 	_ui->convertedData->setRowCount(outputData.size());
 	_ui->convertedData->setColumnCount(2);
 	QStringList m_header;
-	m_header << "Dip" << "Dip Direction";
+	m_header  << "Dip Direction" << "Dip";
 	_ui->convertedData->setHorizontalHeaderLabels(m_header);
 	_ui->convertedData->setShowGrid(false);
 	_ui->convertedData->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
@@ -62,8 +62,8 @@ void FRAn::convertFile()
 
 	for (int i = 0; i < outputData.size(); i++)
 	{
-		_ui->convertedData->setItem(i, 0, new QTableWidgetItem(QString::number(outputData[i].dip)));
-		_ui->convertedData->setItem(i, 1, new QTableWidgetItem(QString::number(outputData[i].dipDir)));		
+		_ui->convertedData->setItem(i, 0, new QTableWidgetItem(QString::number(outputData[i].dipDir)));
+		_ui->convertedData->setItem(i, 1, new QTableWidgetItem(QString::number(outputData[i].dip)));		
 	}
 }
 

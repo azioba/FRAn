@@ -8,6 +8,7 @@
 
 
 
+
 LoaderForm::LoaderForm(QDialog *parent)
 	: QDialog(parent)
 {

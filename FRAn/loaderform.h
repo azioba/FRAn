@@ -2,6 +2,7 @@
 
 #include <QDialog>
 #include <QTableWidget>
+#include <QComboBox>
 #include "Converter.h"
 #include "DataType.h"
 
