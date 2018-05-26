@@ -22,12 +22,13 @@ public:
 	FRAn(QWidget *parent = 0);
 	~FRAn();
 
+
 private:
 	Ui::FRAnClass *_ui = nullptr;
 	LoaderForm *loaderform = nullptr;
 	ClusterAnalysis *clusteranalysis = nullptr;
 	QCPBars *histo = nullptr;
-	QCPGraph *xPlot = nullptr;
+	QCPCurve *cercle = nullptr;
 
 	std::vector<euNorm> _inputData;
 	std::vector<usNorm> _outputData;

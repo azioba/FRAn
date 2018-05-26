@@ -14,9 +14,16 @@ LoaderForm::LoaderForm(QDialog *parent)
 {
 	_ui = new Ui::LoaderForm;
 	_ui->setupUi(this);
+	
+	
+	//datatype = new QComboBox;
+	model = new QStandardItemModel;
+	view = new QTableView;
+	view->setModel(model);
 	//openfile = new QPushButton;
 	//loadfile = new QPushButton;
 
+	//connect(_ui->DataType, SIGNAL(currentIndex()), this, SLOT(setCurrentIndex()));
 	connect(_ui->OpenButton, SIGNAL(clicked()), this, SLOT(openPath()));
 	//connect(_ui.OkButton, SIGNAL(clicked()), this, SLOT(loadFile()));
 	connect(_ui->OkButton, SIGNAL(clicked()), this, SLOT(accept()));
@@ -75,9 +82,13 @@ void LoaderForm::openPath()
 
 	//ui.Preview->setItem(inputData.size(), 3, m_data);
 
-	QStringList m_header;
-	m_header << "Azimuth" << "Dip" << "Dip Azimuth";
-	_ui->Preview->setHorizontalHeaderLabels(m_header);
+	QStringList m_header1, m_header2, m_header3, m_header4;
+	m_header1 << "Azimuth" << "Dip" << "Dip Azimuth";
+	m_header2 << "Dip" << "Dip Direction";
+	m_header3 << "Azimuth" << "Dip" << "Dip Azimuth" << "Spacing" << "Length";
+	m_header4 << "Dip" << "Dip Direction" << "Spacing" << "Length";
+
+	_ui->Preview->setHorizontalHeaderLabels(m_header1);
 	_ui->Preview->setShowGrid(false);
 	_ui->Preview->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
 	_ui->Preview->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);

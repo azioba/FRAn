@@ -13,7 +13,7 @@ FRAn::FRAn(QWidget *parent)
 	loaderform = new LoaderForm;
 	clusteranalysis = new ClusterAnalysis;
 	histo = new QCPBars(_ui->Histo->xAxis, _ui->Histo->yAxis);
-	xPlot = new QCPGraph(_ui->Plot->xAxis, _ui->Plot->yAxis);
+	cercle = new QCPCurve(_ui->Plot->xAxis, _ui->Plot->yAxis);
 
 	// Histogramm///////////////////////////////////////////////////////
 	_ui->Histo->xAxis->setRange(0, 180);
@@ -21,11 +21,28 @@ FRAn::FRAn(QWidget *parent)
 	_ui->Histo->yAxis->setRange(0, 1);
 	_ui->Histo->yAxis->setLabel("Count");
 
-	// XPlot////////////////////////////////////////////////////////////
+	// Cercle////////////////////////////////////////////////////////////
 	_ui->Plot->xAxis->setRange(0, 1);
-	_ui->Plot->xAxis->setLabel("Spacing");
+	//_ui->Plot->xAxis->setLabel("Spacing");
 	_ui->Plot->yAxis->setRange(0, 1);
-	_ui->Plot->yAxis->setLabel("Count");
+	//_ui->Plot->yAxis->setLabel("Count");
+
+	const int pointCount = 500;
+	QVector<QCPCurveData> cercle1(pointCount);
+	for (int i = 0; i < pointCount; ++i)
+	{
+		double phi = (i / (double)(pointCount)) * 2 * M_PI;
+		cercle1[i] = QCPCurveData(i, 90*qCos(phi), 90*qSin(phi));
+	}
+	// pass the data to the curves; we know t (i in loop above) is ascending, so set alreadySorted=true (saves an extra internal sort):
+	cercle->data()->set(cercle1, true);
+	// color the curves:
+	cercle->setPen(QPen(Qt::blue));
+	//cercle->setBrush(QBrush(QColor(0, 0, 255, 20)));
+	// set some basic customPlot config:
+	_ui->Plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+	_ui->Plot->axisRect()->setupFullAxesBox();
+	_ui->Plot->rescaleAxes();
 	
 	connect(_ui->actionOpen_file_s, SIGNAL(triggered()), this, SLOT(openLoader()));
 	connect(_ui->convertButton, SIGNAL(clicked()), this, SLOT(convertFile()));
@@ -69,6 +86,7 @@ void FRAn::convertFile()
 
 void FRAn::plotting()
 {
+	// Histogram //////////////////////////////////////////////////
 	_inputData = loaderform->getInputData();
 	QVector<int> h(181, 0);
 	for (auto xData : _inputData)
@@ -83,6 +101,9 @@ void FRAn::plotting()
 
 	histo->rescaleAxes();
 	_ui->Histo->replot();
+
+	// Cercle //////////////////////////////////////////////////
+	
 }
 
 void FRAn::exporting()

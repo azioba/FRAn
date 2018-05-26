@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QTableWidget>
 #include <QComboBox>
+#include <QStandardItemModel>
 #include "Converter.h"
 #include "DataType.h"
 
@@ -34,8 +35,11 @@ public:
 
 private:
 	Ui::LoaderForm *_ui = nullptr;
+	QStandardItemModel *model = nullptr;
+	QTableView *view = nullptr;
 	std::vector<euNorm> _inputData;
 	euNorm data;
+	//QComboBox *datatype = nullptr;
 	
 
 private slots:
