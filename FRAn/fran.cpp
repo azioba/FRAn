@@ -27,11 +27,11 @@ FRAn::FRAn(QWidget *parent)
 	_ui->Plot->yAxis->setRange(0, 1);
 	//_ui->Plot->yAxis->setLabel("Count");
 
-	const int pointCount = 500;
+	const int pointCount = 360;
 	QVector<QCPCurveData> cercle1(pointCount);
 	for (int i = 0; i < pointCount; ++i)
 	{
-		double phi = (i / (double)(pointCount)) * 2 * M_PI;
+		double phi = (i / (double)(pointCount-1)) * 2 * M_PI;
 		cercle1[i] = QCPCurveData(i, 90*qCos(phi), 90*qSin(phi));
 	}
 	// pass the data to the curves; we know t (i in loop above) is ascending, so set alreadySorted=true (saves an extra internal sort):
@@ -103,6 +103,7 @@ void FRAn::plotting()
 	_ui->Histo->replot();
 
 	// Cercle //////////////////////////////////////////////////
+	_outputData = FRAn::getOuputData();
 	
 }
 

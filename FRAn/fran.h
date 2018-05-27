@@ -22,6 +22,11 @@ public:
 	FRAn(QWidget *parent = 0);
 	~FRAn();
 
+	const std::vector<usNorm>& getOuputData() const
+	{
+		return _outputData;
+	}
+
 
 private:
 	Ui::FRAnClass *_ui = nullptr;
