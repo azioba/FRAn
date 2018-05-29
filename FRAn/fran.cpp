@@ -70,13 +70,13 @@ void FRAn::convertFile()
 	Converter converter(_inputData);
 	converter.convertToUsNorm();
 
-	auto outputData = converter.getOutputData();
-	for (auto test : outputData)
+	_outputData = converter.getOutputData();
+	for (auto test : _outputData)
 	{
 		qDebug() << QString::number(test.dip) << QString::number(test.dipDir);
 	}
 
-	_ui->convertedData->setRowCount(outputData.size());
+	_ui->convertedData->setRowCount(_outputData.size());
 	_ui->convertedData->setColumnCount(2);
 	QStringList m_header;
 	m_header  << "Dip Direction" << "Dip";
@@ -85,10 +85,10 @@ void FRAn::convertFile()
 	_ui->convertedData->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
 	_ui->convertedData->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
 
-	for (int i = 0; i < outputData.size(); i++)
+	for (int i = 0; i < _outputData.size(); i++)
 	{
-		_ui->convertedData->setItem(i, 0, new QTableWidgetItem(QString::number(outputData[i].dipDir)));
-		_ui->convertedData->setItem(i, 1, new QTableWidgetItem(QString::number(outputData[i].dip)));		
+		_ui->convertedData->setItem(i, 0, new QTableWidgetItem(QString::number(_outputData[i].dipDir)));
+		_ui->convertedData->setItem(i, 1, new QTableWidgetItem(QString::number(_outputData[i].dip)));		
 	}
 }
 
@@ -111,13 +111,11 @@ void FRAn::plotting()
 	_ui->_histo->replot();
 
 	// _cercle //////////////////////////////////////////////////
-	_outputData = FRAn::getOuputData();
-	
-	_graph->addData(10, 10);
-	_graph->addData(10, 20);
-	_graph->addData(-10, 20);
-	_graph->addData(-10, -20);
-	_graph->addData(80, 10);
+	for (int i = 0; i < _outputData.size(); ++i)
+	{
+		_graph->addData(_outputData[i].dip, _outputData[i].dipDir);
+	}
+
 	_graph->setLineStyle(QCPGraph::lsNone);
 	_graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 5));
 	_ui->Plot->replot();
