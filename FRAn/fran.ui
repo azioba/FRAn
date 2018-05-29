@@ -122,7 +122,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QCustomPlot" name="Histo" native="true">
+       <widget class="QCustomPlot" name="_histo" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
           <horstretch>0</horstretch>

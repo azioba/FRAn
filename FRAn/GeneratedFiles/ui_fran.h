@@ -52,7 +52,7 @@ public:
     QPushButton *exportButton;
     QVBoxLayout *verticalLayout;
     QCustomPlot *Plot;
-    QCustomPlot *Histo;
+    QCustomPlot *_histo;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
@@ -167,12 +167,12 @@ public:
 
         verticalLayout->addWidget(Plot);
 
-        Histo = new QCustomPlot(centralWidget);
-        Histo->setObjectName(QStringLiteral("Histo"));
-        sizePolicy.setHeightForWidth(Histo->sizePolicy().hasHeightForWidth());
-        Histo->setSizePolicy(sizePolicy);
+        _histo = new QCustomPlot(centralWidget);
+        _histo->setObjectName(QStringLiteral("_histo"));
+        sizePolicy.setHeightForWidth(_histo->sizePolicy().hasHeightForWidth());
+        _histo->setSizePolicy(sizePolicy);
 
-        verticalLayout->addWidget(Histo);
+        verticalLayout->addWidget(_histo);
 
 
         horizontalLayout->addLayout(verticalLayout);
