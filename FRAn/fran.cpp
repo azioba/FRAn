@@ -26,12 +26,13 @@ FRAn::FRAn(QWidget *parent)
 	_ui->Plot->xAxis->setRange(0, 1);
 	//_ui->Plot->xAxis->setLabel("Spacing");
 	_ui->Plot->yAxis->setRange(0, 1);
+	_ui->Plot->xAxis2->setVisible(false);
 	//_ui->Plot->yAxis->setLabel("Count");
 
 	// graph //////////////////////////////////////////////////////////
 	_ui->Plot->xAxis2->setRange(0, 1);
 	_ui->Plot->yAxis2->setRange(0, 1);
-	_ui->Plot->xAxis2->setVisible(true);
+	_ui->Plot->xAxis2->setVisible(false);
 
 
 	const int pointCount = 360;
@@ -48,7 +49,7 @@ FRAn::FRAn(QWidget *parent)
 	_cercle->setPen(QPen(Qt::blue));
 	//_cercle->setBrush(QBrush(QColor(0, 0, 255, 20)));
 	// set some basic customPlot config:
-	_ui->Plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+	//_ui->Plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 	_ui->Plot->axisRect()->setupFullAxesBox();
 	_ui->Plot->rescaleAxes();
 	
@@ -113,11 +114,13 @@ void FRAn::plotting()
 	// _cercle //////////////////////////////////////////////////
 	for (int i = 0; i < _outputData.size(); ++i)
 	{
-		_graph->addData(_outputData[i].dip, _outputData[i].dipDir);
+		double phi = ((360.0 - _outputData[i].dipDir) + 90 ) / 180 * M_PI;
+		double rayon = _outputData[i].dip;
+		_graph->addData(rayon*qCos(phi), rayon*qSin(phi));
 	}
 
 	_graph->setLineStyle(QCPGraph::lsNone);
-	_graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 5));
+	_graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 2));
 	_ui->Plot->replot();
 	
 }
