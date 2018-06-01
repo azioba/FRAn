@@ -12,38 +12,44 @@ FRAn::FRAn(QWidget *parent)
 
 	loaderform = new LoaderForm;
 	clusteranalysis = new ClusterAnalysis;
-	histo = new QCPBars(_ui->Histo->xAxis, _ui->Histo->yAxis);
-	cercle = new QCPCurve(_ui->Plot->xAxis, _ui->Plot->yAxis);
-	graph = new QCPGraph(_ui->Plot->xAxis2, _ui->Plot->yAxis2);
+	_histo = new QCPBars(_ui->_histo->xAxis, _ui->_histo->yAxis);
+	_cercle = new QCPCurve(_ui->Plot->xAxis, _ui->Plot->yAxis);
+	_graph = new QCPGraph(_ui->Plot->xAxis, _ui->Plot->yAxis);
 
-	// Histogramm///////////////////////////////////////////////////////
-	_ui->Histo->xAxis->setRange(0, 180);
-	_ui->Histo->xAxis->setLabel("Azimuth");
-	_ui->Histo->yAxis->setRange(0, 1);
-	_ui->Histo->yAxis->setLabel("Count");
+	// _histogramm///////////////////////////////////////////////////////
+	_ui->_histo->xAxis->setRange(0, 180);
+	_ui->_histo->xAxis->setLabel("Azimuth");
+	_ui->_histo->yAxis->setRange(0, 1);
+	_ui->_histo->yAxis->setLabel("Count");
 
-	// Cercle////////////////////////////////////////////////////////////
+	// _cercle////////////////////////////////////////////////////////////
 	_ui->Plot->xAxis->setRange(0, 1);
-	_ui->Plot->xAxis2->setRange(0, 1);
 	//_ui->Plot->xAxis->setLabel("Spacing");
 	_ui->Plot->yAxis->setRange(0, 1);
-	_ui->Plot->yAxis2->setRange(0, 1);
+	_ui->Plot->xAxis2->setVisible(false);
 	//_ui->Plot->yAxis->setLabel("Count");
 
+	// graph //////////////////////////////////////////////////////////
+	_ui->Plot->xAxis2->setRange(0, 1);
+	_ui->Plot->yAxis2->setRange(0, 1);
+	_ui->Plot->xAxis2->setVisible(false);
+
+
 	const int pointCount = 360;
-	QVector<QCPCurveData> cercle1(pointCount);
+	int rayon = 90;
+	QVector<QCPCurveData> _cercle1(pointCount);
 	for (int i = 0; i < pointCount; ++i)
 	{
-		double phi = (i / (double)(pointCount-1)) * 2 * M_PI;
-		cercle1[i] = QCPCurveData(i, 90*qCos(phi), 90*qSin(phi));
+		double phi = (i / (double)(pointCount)) * 2 * M_PI;
+		_cercle1[i] = QCPCurveData(i, rayon*qCos(phi), rayon*qSin(phi));
 	}
 	// pass the data to the curves; we know t (i in loop above) is ascending, so set alreadySorted=true (saves an extra internal sort):
-	cercle->data()->set(cercle1, true);
+	_cercle->data()->set(_cercle1, true);
 	// color the curves:
-	cercle->setPen(QPen(Qt::blue));
-	//cercle->setBrush(QBrush(QColor(0, 0, 255, 20)));
+	_cercle->setPen(QPen(Qt::blue));
+	//_cercle->setBrush(QBrush(QColor(0, 0, 255, 20)));
 	// set some basic customPlot config:
-	_ui->Plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+	//_ui->Plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 	_ui->Plot->axisRect()->setupFullAxesBox();
 	_ui->Plot->rescaleAxes();
 	
@@ -65,13 +71,13 @@ void FRAn::convertFile()
 	Converter converter(_inputData);
 	converter.convertToUsNorm();
 
-	auto outputData = converter.getOutputData();
-	for (auto test : outputData)
+	_outputData = converter.getOutputData();
+	for (auto test : _outputData)
 	{
 		qDebug() << QString::number(test.dip) << QString::number(test.dipDir);
 	}
 
-	_ui->convertedData->setRowCount(outputData.size());
+	_ui->convertedData->setRowCount(_outputData.size());
 	_ui->convertedData->setColumnCount(2);
 	QStringList m_header;
 	m_header  << "Dip Direction" << "Dip";
@@ -80,16 +86,16 @@ void FRAn::convertFile()
 	_ui->convertedData->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
 	_ui->convertedData->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
 
-	for (int i = 0; i < outputData.size(); i++)
+	for (int i = 0; i < _outputData.size(); i++)
 	{
-		_ui->convertedData->setItem(i, 0, new QTableWidgetItem(QString::number(outputData[i].dipDir)));
-		_ui->convertedData->setItem(i, 1, new QTableWidgetItem(QString::number(outputData[i].dip)));		
+		_ui->convertedData->setItem(i, 0, new QTableWidgetItem(QString::number(_outputData[i].dipDir)));
+		_ui->convertedData->setItem(i, 1, new QTableWidgetItem(QString::number(_outputData[i].dip)));		
 	}
 }
 
 void FRAn::plotting()
 {
-	// Histogram //////////////////////////////////////////////////
+	// _histogram //////////////////////////////////////////////////
 	_inputData = loaderform->getInputData();
 	QVector<int> h(181, 0);
 	for (auto xData : _inputData)
@@ -99,15 +105,23 @@ void FRAn::plotting()
 
 	for (int i = 0, stop = h.count(); i < stop; ++i)
 	{
-		histo->addData(i, h[i]);
+		_histo->addData(i, h[i]);
 	}
 
-	histo->rescaleAxes();
-	_ui->Histo->replot();
+	_histo->rescaleAxes();
+	_ui->_histo->replot();
 
-	// Cercle //////////////////////////////////////////////////
-	_outputData = FRAn::getOuputData();
-	graph->addData(80, 80); 
+	// _cercle //////////////////////////////////////////////////
+	for (int i = 0; i < _outputData.size(); ++i)
+	{
+		double phi = ((360.0 - _outputData[i].dipDir) + 90 ) / 180 * M_PI;
+		double rayon = _outputData[i].dip;
+		_graph->addData(rayon*qCos(phi), rayon*qSin(phi));
+	}
+
+	_graph->setLineStyle(QCPGraph::lsNone);
+	_graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 2));
+	_ui->Plot->replot();
 	
 }
 
