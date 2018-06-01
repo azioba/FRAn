@@ -34,6 +34,7 @@ private:
 	ClusterAnalysis *clusteranalysis = nullptr;
 	QCPBars *histo = nullptr;
 	QCPCurve *cercle = nullptr;
+	QCPGraph *graph = nullptr;
 
 	std::vector<euNorm> _inputData;
 	std::vector<usNorm> _outputData;

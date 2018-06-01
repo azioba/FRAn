@@ -14,6 +14,7 @@ FRAn::FRAn(QWidget *parent)
 	clusteranalysis = new ClusterAnalysis;
 	histo = new QCPBars(_ui->Histo->xAxis, _ui->Histo->yAxis);
 	cercle = new QCPCurve(_ui->Plot->xAxis, _ui->Plot->yAxis);
+	graph = new QCPGraph(_ui->Plot->xAxis2, _ui->Plot->yAxis2);
 
 	// Histogramm///////////////////////////////////////////////////////
 	_ui->Histo->xAxis->setRange(0, 180);
@@ -23,8 +24,10 @@ FRAn::FRAn(QWidget *parent)
 
 	// Cercle////////////////////////////////////////////////////////////
 	_ui->Plot->xAxis->setRange(0, 1);
+	_ui->Plot->xAxis2->setRange(0, 1);
 	//_ui->Plot->xAxis->setLabel("Spacing");
 	_ui->Plot->yAxis->setRange(0, 1);
+	_ui->Plot->yAxis2->setRange(0, 1);
 	//_ui->Plot->yAxis->setLabel("Count");
 
 	const int pointCount = 360;
@@ -104,6 +107,7 @@ void FRAn::plotting()
 
 	// Cercle //////////////////////////////////////////////////
 	_outputData = FRAn::getOuputData();
+	graph->addData(80, 80); 
 	
 }
 
