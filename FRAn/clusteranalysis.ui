@@ -23,9 +23,15 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QGroupBox" name="groupBox_5">
+         <widget class="QGroupBox" name="groupBox_Parameters">
           <property name="title">
-           <string>Settings</string>
+           <string>Parameters</string>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
@@ -88,9 +94,9 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QTabWidget" name="Histogram">
+         <widget class="QTabWidget" name="QTab_widgets">
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_Steronet">
            <attribute name="title">
@@ -98,7 +104,7 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
-             <widget class="QCustomPlot" name="widget" native="true">
+             <widget class="QCustomPlot" name="widget_Stereo" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -109,26 +115,73 @@
             </item>
             <item>
              <widget class="QGroupBox" name="groupBox_Stereo">
-              <property name="title">
-               <string>GroupBox</string>
-              </property>
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
-                <widget class="QPushButton" name="pushButton_7">
+                <widget class="QPushButton" name="plot_Stereo">
                  <property name="text">
-                  <string>PushButton</string>
+                  <string>Plot</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_8">
+                <widget class="QPushButton" name="clear_Stereo">
                  <property name="text">
-                  <string>PushButton</string>
+                  <string>Clear</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="Tab_Rosace">
+           <attribute name="title">
+            <string>Rose Diagram</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QCustomPlot" name="widget_Rosace" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_Rosace">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QPushButton" name="plot_Rosace">
+                 <property name="text">
+                  <string>Plot</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="clear_Rosace">
+                 <property name="text">
+                  <string>Clear</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_4">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -151,7 +204,7 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
-             <widget class="QCustomPlot" name="widget_2" native="true">
+             <widget class="QCustomPlot" name="widget_Histo" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -162,21 +215,18 @@
             </item>
             <item>
              <widget class="QGroupBox" name="groupBox_Histo">
-              <property name="title">
-               <string>GroupBox</string>
-              </property>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
                <item>
-                <widget class="QPushButton" name="pushButton_5">
+                <widget class="QPushButton" name="plot_Histo">
                  <property name="text">
-                  <string>PushButton</string>
+                  <string>Plot</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_6">
+                <widget class="QPushButton" name="clear_Histo">
                  <property name="text">
-                  <string>PushButton</string>
+                  <string>Clear</string>
                  </property>
                 </widget>
                </item>
@@ -204,7 +254,7 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <widget class="QCustomPlot" name="widget_3" native="true">
+             <widget class="QCustomPlot" name="widget_Xplot" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -215,79 +265,23 @@
             </item>
             <item>
              <widget class="QGroupBox" name="groupBox_Xplot">
-              <property name="title">
-               <string>GroupBox</string>
-              </property>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="QPushButton" name="pushButton_3">
+                <widget class="QPushButton" name="plot_Xplot">
                  <property name="text">
-                  <string>PushButton</string>
+                  <string>Plot</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_4">
+                <widget class="QPushButton" name="clear_Xplot">
                  <property name="text">
-                  <string>PushButton</string>
+                  <string>Clear</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_4">
-           <attribute name="title">
-            <string>Page</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
-            <item>
-             <widget class="QCustomPlot" name="widget_4" native="true">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="groupBox_6">
-              <property name="title">
-               <string>GroupBox</string>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_6">
-               <item>
-                <widget class="QPushButton" name="pushButton_11">
-                 <property name="text">
-                  <string>PushButton</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_12">
-                 <property name="text">
-                  <string>PushButton</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
