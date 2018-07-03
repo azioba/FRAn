@@ -33,46 +33,46 @@ public:
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
-    QGroupBox *groupBox_5;
+    QGroupBox *groupBox_Parameters;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_10;
     QPushButton *pushButton_9;
     QPushButton *pushButton_2;
     QPushButton *pushButton;
     QVBoxLayout *verticalLayout_5;
-    QTabWidget *Histogram;
+    QTabWidget *QTab_widgets;
     QWidget *tab_Steronet;
     QVBoxLayout *verticalLayout_6;
-    QCustomPlot *widget;
+    QCustomPlot *widget_Stereo;
     QGroupBox *groupBox_Stereo;
     QHBoxLayout *horizontalLayout_5;
-    QPushButton *pushButton_7;
-    QPushButton *pushButton_8;
+    QPushButton *plot_Stereo;
+    QPushButton *clear_Stereo;
     QSpacerItem *horizontalSpacer_3;
+    QWidget *Tab_Rosace;
+    QVBoxLayout *verticalLayout_7;
+    QCustomPlot *widget_Rosace;
+    QGroupBox *groupBox_Rosace;
+    QHBoxLayout *horizontalLayout_6;
+    QPushButton *plot_Rosace;
+    QPushButton *clear_Rosace;
+    QSpacerItem *horizontalSpacer_4;
     QWidget *tab_Histogram;
     QVBoxLayout *verticalLayout_3;
-    QCustomPlot *widget_2;
+    QCustomPlot *widget_Histo;
     QGroupBox *groupBox_Histo;
     QHBoxLayout *horizontalLayout_4;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
+    QPushButton *plot_Histo;
+    QPushButton *clear_Histo;
     QSpacerItem *horizontalSpacer_2;
     QWidget *tab_Xplot;
     QVBoxLayout *verticalLayout_4;
-    QCustomPlot *widget_3;
+    QCustomPlot *widget_Xplot;
     QGroupBox *groupBox_Xplot;
     QHBoxLayout *horizontalLayout_3;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
+    QPushButton *plot_Xplot;
+    QPushButton *clear_Xplot;
     QSpacerItem *horizontalSpacer;
-    QWidget *tab_4;
-    QVBoxLayout *verticalLayout_7;
-    QCustomPlot *widget_4;
-    QGroupBox *groupBox_6;
-    QHBoxLayout *horizontalLayout_6;
-    QPushButton *pushButton_11;
-    QPushButton *pushButton_12;
-    QSpacerItem *horizontalSpacer_4;
 
     void setupUi(QDialog *ClusterAnalysis)
     {
@@ -87,11 +87,13 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        groupBox_5 = new QGroupBox(groupBox);
-        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
-        horizontalLayout_2 = new QHBoxLayout(groupBox_5);
+        groupBox_Parameters = new QGroupBox(groupBox);
+        groupBox_Parameters->setObjectName(QStringLiteral("groupBox_Parameters"));
+        groupBox_Parameters->setFlat(false);
+        groupBox_Parameters->setCheckable(false);
+        horizontalLayout_2 = new QHBoxLayout(groupBox_Parameters);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pushButton_10 = new QPushButton(groupBox_5);
+        pushButton_10 = new QPushButton(groupBox_Parameters);
         pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -101,7 +103,7 @@ public:
 
         horizontalLayout_2->addWidget(pushButton_10);
 
-        pushButton_9 = new QPushButton(groupBox_5);
+        pushButton_9 = new QPushButton(groupBox_Parameters);
         pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
         sizePolicy.setHeightForWidth(pushButton_9->sizePolicy().hasHeightForWidth());
         pushButton_9->setSizePolicy(sizePolicy);
@@ -109,7 +111,7 @@ public:
         horizontalLayout_2->addWidget(pushButton_9);
 
 
-        verticalLayout_2->addWidget(groupBox_5);
+        verticalLayout_2->addWidget(groupBox_Parameters);
 
         pushButton_2 = new QPushButton(groupBox);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
@@ -130,35 +132,35 @@ public:
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        Histogram = new QTabWidget(groupBox);
-        Histogram->setObjectName(QStringLiteral("Histogram"));
+        QTab_widgets = new QTabWidget(groupBox);
+        QTab_widgets->setObjectName(QStringLiteral("QTab_widgets"));
         tab_Steronet = new QWidget();
         tab_Steronet->setObjectName(QStringLiteral("tab_Steronet"));
         verticalLayout_6 = new QVBoxLayout(tab_Steronet);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        widget = new QCustomPlot(tab_Steronet);
-        widget->setObjectName(QStringLiteral("widget"));
+        widget_Stereo = new QCustomPlot(tab_Steronet);
+        widget_Stereo->setObjectName(QStringLiteral("widget_Stereo"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(widget_Stereo->sizePolicy().hasHeightForWidth());
+        widget_Stereo->setSizePolicy(sizePolicy1);
 
-        verticalLayout_6->addWidget(widget);
+        verticalLayout_6->addWidget(widget_Stereo);
 
         groupBox_Stereo = new QGroupBox(tab_Steronet);
         groupBox_Stereo->setObjectName(QStringLiteral("groupBox_Stereo"));
         horizontalLayout_5 = new QHBoxLayout(groupBox_Stereo);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        pushButton_7 = new QPushButton(groupBox_Stereo);
-        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
+        plot_Stereo = new QPushButton(groupBox_Stereo);
+        plot_Stereo->setObjectName(QStringLiteral("plot_Stereo"));
 
-        horizontalLayout_5->addWidget(pushButton_7);
+        horizontalLayout_5->addWidget(plot_Stereo);
 
-        pushButton_8 = new QPushButton(groupBox_Stereo);
-        pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
+        clear_Stereo = new QPushButton(groupBox_Stereo);
+        clear_Stereo->setObjectName(QStringLiteral("clear_Stereo"));
 
-        horizontalLayout_5->addWidget(pushButton_8);
+        horizontalLayout_5->addWidget(clear_Stereo);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -167,31 +169,64 @@ public:
 
         verticalLayout_6->addWidget(groupBox_Stereo);
 
-        Histogram->addTab(tab_Steronet, QString());
+        QTab_widgets->addTab(tab_Steronet, QString());
+        Tab_Rosace = new QWidget();
+        Tab_Rosace->setObjectName(QStringLiteral("Tab_Rosace"));
+        verticalLayout_7 = new QVBoxLayout(Tab_Rosace);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        widget_Rosace = new QCustomPlot(Tab_Rosace);
+        widget_Rosace->setObjectName(QStringLiteral("widget_Rosace"));
+        sizePolicy1.setHeightForWidth(widget_Rosace->sizePolicy().hasHeightForWidth());
+        widget_Rosace->setSizePolicy(sizePolicy1);
+
+        verticalLayout_7->addWidget(widget_Rosace);
+
+        groupBox_Rosace = new QGroupBox(Tab_Rosace);
+        groupBox_Rosace->setObjectName(QStringLiteral("groupBox_Rosace"));
+        horizontalLayout_6 = new QHBoxLayout(groupBox_Rosace);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        plot_Rosace = new QPushButton(groupBox_Rosace);
+        plot_Rosace->setObjectName(QStringLiteral("plot_Rosace"));
+
+        horizontalLayout_6->addWidget(plot_Rosace);
+
+        clear_Rosace = new QPushButton(groupBox_Rosace);
+        clear_Rosace->setObjectName(QStringLiteral("clear_Rosace"));
+
+        horizontalLayout_6->addWidget(clear_Rosace);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_4);
+
+
+        verticalLayout_7->addWidget(groupBox_Rosace);
+
+        QTab_widgets->addTab(Tab_Rosace, QString());
         tab_Histogram = new QWidget();
         tab_Histogram->setObjectName(QStringLiteral("tab_Histogram"));
         verticalLayout_3 = new QVBoxLayout(tab_Histogram);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        widget_2 = new QCustomPlot(tab_Histogram);
-        widget_2->setObjectName(QStringLiteral("widget_2"));
-        sizePolicy1.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
-        widget_2->setSizePolicy(sizePolicy1);
+        widget_Histo = new QCustomPlot(tab_Histogram);
+        widget_Histo->setObjectName(QStringLiteral("widget_Histo"));
+        sizePolicy1.setHeightForWidth(widget_Histo->sizePolicy().hasHeightForWidth());
+        widget_Histo->setSizePolicy(sizePolicy1);
 
-        verticalLayout_3->addWidget(widget_2);
+        verticalLayout_3->addWidget(widget_Histo);
 
         groupBox_Histo = new QGroupBox(tab_Histogram);
         groupBox_Histo->setObjectName(QStringLiteral("groupBox_Histo"));
         horizontalLayout_4 = new QHBoxLayout(groupBox_Histo);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        pushButton_5 = new QPushButton(groupBox_Histo);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        plot_Histo = new QPushButton(groupBox_Histo);
+        plot_Histo->setObjectName(QStringLiteral("plot_Histo"));
 
-        horizontalLayout_4->addWidget(pushButton_5);
+        horizontalLayout_4->addWidget(plot_Histo);
 
-        pushButton_6 = new QPushButton(groupBox_Histo);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        clear_Histo = new QPushButton(groupBox_Histo);
+        clear_Histo->setObjectName(QStringLiteral("clear_Histo"));
 
-        horizontalLayout_4->addWidget(pushButton_6);
+        horizontalLayout_4->addWidget(clear_Histo);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -200,31 +235,31 @@ public:
 
         verticalLayout_3->addWidget(groupBox_Histo);
 
-        Histogram->addTab(tab_Histogram, QString());
+        QTab_widgets->addTab(tab_Histogram, QString());
         tab_Xplot = new QWidget();
         tab_Xplot->setObjectName(QStringLiteral("tab_Xplot"));
         verticalLayout_4 = new QVBoxLayout(tab_Xplot);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        widget_3 = new QCustomPlot(tab_Xplot);
-        widget_3->setObjectName(QStringLiteral("widget_3"));
-        sizePolicy1.setHeightForWidth(widget_3->sizePolicy().hasHeightForWidth());
-        widget_3->setSizePolicy(sizePolicy1);
+        widget_Xplot = new QCustomPlot(tab_Xplot);
+        widget_Xplot->setObjectName(QStringLiteral("widget_Xplot"));
+        sizePolicy1.setHeightForWidth(widget_Xplot->sizePolicy().hasHeightForWidth());
+        widget_Xplot->setSizePolicy(sizePolicy1);
 
-        verticalLayout_4->addWidget(widget_3);
+        verticalLayout_4->addWidget(widget_Xplot);
 
         groupBox_Xplot = new QGroupBox(tab_Xplot);
         groupBox_Xplot->setObjectName(QStringLiteral("groupBox_Xplot"));
         horizontalLayout_3 = new QHBoxLayout(groupBox_Xplot);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        pushButton_3 = new QPushButton(groupBox_Xplot);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        plot_Xplot = new QPushButton(groupBox_Xplot);
+        plot_Xplot->setObjectName(QStringLiteral("plot_Xplot"));
 
-        horizontalLayout_3->addWidget(pushButton_3);
+        horizontalLayout_3->addWidget(plot_Xplot);
 
-        pushButton_4 = new QPushButton(groupBox_Xplot);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        clear_Xplot = new QPushButton(groupBox_Xplot);
+        clear_Xplot->setObjectName(QStringLiteral("clear_Xplot"));
 
-        horizontalLayout_3->addWidget(pushButton_4);
+        horizontalLayout_3->addWidget(clear_Xplot);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -233,42 +268,9 @@ public:
 
         verticalLayout_4->addWidget(groupBox_Xplot);
 
-        Histogram->addTab(tab_Xplot, QString());
-        tab_4 = new QWidget();
-        tab_4->setObjectName(QStringLiteral("tab_4"));
-        verticalLayout_7 = new QVBoxLayout(tab_4);
-        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
-        widget_4 = new QCustomPlot(tab_4);
-        widget_4->setObjectName(QStringLiteral("widget_4"));
-        sizePolicy1.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
-        widget_4->setSizePolicy(sizePolicy1);
+        QTab_widgets->addTab(tab_Xplot, QString());
 
-        verticalLayout_7->addWidget(widget_4);
-
-        groupBox_6 = new QGroupBox(tab_4);
-        groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
-        horizontalLayout_6 = new QHBoxLayout(groupBox_6);
-        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        pushButton_11 = new QPushButton(groupBox_6);
-        pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
-
-        horizontalLayout_6->addWidget(pushButton_11);
-
-        pushButton_12 = new QPushButton(groupBox_6);
-        pushButton_12->setObjectName(QStringLiteral("pushButton_12"));
-
-        horizontalLayout_6->addWidget(pushButton_12);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_4);
-
-
-        verticalLayout_7->addWidget(groupBox_6);
-
-        Histogram->addTab(tab_4, QString());
-
-        verticalLayout_5->addWidget(Histogram);
+        verticalLayout_5->addWidget(QTab_widgets);
 
 
         horizontalLayout->addLayout(verticalLayout_5);
@@ -279,7 +281,7 @@ public:
 
         retranslateUi(ClusterAnalysis);
 
-        Histogram->setCurrentIndex(3);
+        QTab_widgets->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ClusterAnalysis);
@@ -289,27 +291,23 @@ public:
     {
         ClusterAnalysis->setWindowTitle(QApplication::translate("ClusterAnalysis", "Dialog", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("ClusterAnalysis", "GroupBox", Q_NULLPTR));
-        groupBox_5->setTitle(QApplication::translate("ClusterAnalysis", "Settings", Q_NULLPTR));
+        groupBox_Parameters->setTitle(QApplication::translate("ClusterAnalysis", "Parameters", Q_NULLPTR));
         pushButton_10->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
         pushButton_9->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
         pushButton->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        groupBox_Stereo->setTitle(QApplication::translate("ClusterAnalysis", "GroupBox", Q_NULLPTR));
-        pushButton_7->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        pushButton_8->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        Histogram->setTabText(Histogram->indexOf(tab_Steronet), QApplication::translate("ClusterAnalysis", "Stereonet", Q_NULLPTR));
-        groupBox_Histo->setTitle(QApplication::translate("ClusterAnalysis", "GroupBox", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        pushButton_6->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        Histogram->setTabText(Histogram->indexOf(tab_Histogram), QApplication::translate("ClusterAnalysis", "Histogram", Q_NULLPTR));
-        groupBox_Xplot->setTitle(QApplication::translate("ClusterAnalysis", "GroupBox", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        Histogram->setTabText(Histogram->indexOf(tab_Xplot), QApplication::translate("ClusterAnalysis", "Crossplot", Q_NULLPTR));
-        groupBox_6->setTitle(QApplication::translate("ClusterAnalysis", "GroupBox", Q_NULLPTR));
-        pushButton_11->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        pushButton_12->setText(QApplication::translate("ClusterAnalysis", "PushButton", Q_NULLPTR));
-        Histogram->setTabText(Histogram->indexOf(tab_4), QApplication::translate("ClusterAnalysis", "Page", Q_NULLPTR));
+        plot_Stereo->setText(QApplication::translate("ClusterAnalysis", "Plot", Q_NULLPTR));
+        clear_Stereo->setText(QApplication::translate("ClusterAnalysis", "Clear", Q_NULLPTR));
+        QTab_widgets->setTabText(QTab_widgets->indexOf(tab_Steronet), QApplication::translate("ClusterAnalysis", "Stereonet", Q_NULLPTR));
+        plot_Rosace->setText(QApplication::translate("ClusterAnalysis", "Plot", Q_NULLPTR));
+        clear_Rosace->setText(QApplication::translate("ClusterAnalysis", "Clear", Q_NULLPTR));
+        QTab_widgets->setTabText(QTab_widgets->indexOf(Tab_Rosace), QApplication::translate("ClusterAnalysis", "Rose Diagram", Q_NULLPTR));
+        plot_Histo->setText(QApplication::translate("ClusterAnalysis", "Plot", Q_NULLPTR));
+        clear_Histo->setText(QApplication::translate("ClusterAnalysis", "Clear", Q_NULLPTR));
+        QTab_widgets->setTabText(QTab_widgets->indexOf(tab_Histogram), QApplication::translate("ClusterAnalysis", "Histogram", Q_NULLPTR));
+        plot_Xplot->setText(QApplication::translate("ClusterAnalysis", "Plot", Q_NULLPTR));
+        clear_Xplot->setText(QApplication::translate("ClusterAnalysis", "Clear", Q_NULLPTR));
+        QTab_widgets->setTabText(QTab_widgets->indexOf(tab_Xplot), QApplication::translate("ClusterAnalysis", "Crossplot", Q_NULLPTR));
     } // retranslateUi
 
 };
