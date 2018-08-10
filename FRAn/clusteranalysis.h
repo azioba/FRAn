@@ -11,6 +11,10 @@ public:
 	~ClusterAnalysis();
 
 private:
-	Ui::ClusterAnalysis ui;
+	Ui::ClusterAnalysis *_ui = nullptr;
+	QCPBars *_histo = nullptr;
+	QCPGraph *_rosace = nullptr;
+	QCPGraph *_xplot = nullptr;
+	QCPGraph *_stereo = nullptr;
 	
 };
