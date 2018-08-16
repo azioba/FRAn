@@ -19,6 +19,7 @@ ClusterAnalysis::ClusterAnalysis(QDialog * parent)
 	_histo = new QCPBars(_ui->widget_Histo->xAxis, _ui->widget_Histo->yAxis);
 	_xplot = new QCPGraph(_ui->widget_Xplot->xAxis, _ui->widget_Xplot->yAxis);
 	
+
 }
 
 ClusterAnalysis::~ClusterAnalysis() 
